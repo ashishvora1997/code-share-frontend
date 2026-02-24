@@ -158,7 +158,62 @@ export const ShareEditor = ({ shareId, onGoHome }: ShareEditorProps) => {
               </div>
             </div>
           </div>
-          <div className="flex gap-2">
+          <div className="flex gap-2 self-start">
+            <div className="relative group">
+              <button
+                onClick={handleCopyLink}
+                className="bg-slate-700 hover:bg-slate-600 text-white 
+                   p-2 sm:px-4 sm:py-2 rounded-lg 
+                   transition-all duration-200 
+                   flex items-center justify-center gap-2"
+              >
+                {copied ? (
+                  <Check className="w-4 h-4" />
+                ) : (
+                  <Copy className="w-4 h-4" />
+                )}
+
+                <span className="hidden sm:inline">
+                  {copied ? "Copied!" : "Copy Link"}
+                </span>
+              </button>
+
+              <div
+                className="absolute -bottom-8 left-1/2 -translate-x-1/2 
+                      opacity-0 group-hover:opacity-100 
+                      bg-black text-white text-xs px-2 py-1 
+                      rounded-md whitespace-nowrap 
+                      transition-opacity duration-200 sm:hidden"
+              >
+                {copied ? "Copied!" : "Copy Link"}
+              </div>
+            </div>
+
+            <div className="relative group">
+              <button
+                onClick={onGoHome}
+                className="bg-slate-700 hover:bg-slate-600 text-white 
+                   p-2 sm:px-4 sm:py-2 rounded-lg 
+                   transition-all duration-200 
+                   flex items-center justify-center gap-2"
+              >
+                <Home className="w-4 h-4" />
+
+                <span className="hidden sm:inline">New Share</span>
+              </button>
+
+              <div
+                className="absolute -bottom-8 left-1/2 -translate-x-1/2 
+                      opacity-0 group-hover:opacity-100 
+                      bg-black text-white text-xs px-2 py-1 
+                      rounded-md whitespace-nowrap 
+                      transition-opacity duration-200 sm:hidden"
+              >
+                New Share
+              </div>
+            </div>
+          </div>
+          {/* <div className="flex gap-2">
             <button
               onClick={handleCopyLink}
               className="bg-slate-700 hover:bg-slate-600 text-white font-medium py-2 px-4 rounded-lg transition-all duration-200 flex items-center gap-2"
@@ -182,7 +237,7 @@ export const ShareEditor = ({ shareId, onGoHome }: ShareEditorProps) => {
               <Home className="w-4 h-4" />
               New Share
             </button>
-          </div>
+          </div> */}
         </div>
 
         <div className="bg-slate-800/50 backdrop-blur-sm rounded-xl shadow-2xl border border-slate-700/50 overflow-hidden">
@@ -219,6 +274,6 @@ export const ShareEditor = ({ shareId, onGoHome }: ShareEditorProps) => {
       </div>
     </div>
   );
-}
+};
 
 export default React.memo(ShareEditor);
